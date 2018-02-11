@@ -15,63 +15,56 @@ namespace VPShelter
         private bool isTired;
         private bool isSick;
         private string name;
-        private string description;
 
-        //Properties
-        public bool IsHungry
+
+        #region Properties
+        public virtual bool IsHungry
         {
             get { return this.isHungry; }
-            //set { this.isHungry = value; }
+            set { this.isHungry = value; }
         }
-        public bool IsThirsty
+        public virtual bool IsThirsty
         {
             get { return this.isThirsty; }
-            //set { this.isThirsty = value; }
+            set { this.isThirsty = value; }
         }
-        public bool IsBored
+        public virtual bool IsBored
         {
             get { return this.isBored; }
-            //set { this.isBored = value; }
+            set { this.isBored = value; }
         }
-        public bool IsTired
+        public virtual bool IsTired
         {
             get { return this.isTired; }
-            //set { this.isTired = value; }
+            set { this.isTired = value; }
         }
-        public bool IsSick
+        public virtual bool IsSick
         {
             get { return this.isSick; }
-            //set { this.isSick = value; }
+            set { this.isSick = value; }
         }
-        public string Name
+        public virtual string Name
         {
             get { return this.name; }
             set { this.name = value; }
         }
-        public string Description
-        {
-            get { return this.description; }
-            set { this.description = value; }
-        }
-         
+        #endregion 
+
         //Constructors
         public VirtualPet()
         {
             
         }
-        public VirtualPet(bool isHungry, bool isBored, bool isTired, bool isSick)
+        public VirtualPet(string name,bool isHungry, bool isThirsty, bool isBored, bool isTired, bool isSick)
         {
+            this.name = name;
             this.isHungry = isHungry;
+            this.isThirsty = isThirsty;
             this.isBored = isBored;
             this.isTired = isTired;
             this.isSick = isSick;
         }
-        public VirtualPet(string name, string description)
-        {
-            this.name = name;
-            this.description = description;
-        }
-
+        
         //Methods
         public string Feed()
         {

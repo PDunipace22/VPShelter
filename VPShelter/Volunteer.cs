@@ -9,18 +9,35 @@ namespace VPShelter
 
     public class Volunteer : Employee
     {
-        public string Likes { get; set; }
+        private string petLikes;      
+
+        public string PetLikes
+        {
+            get { return this.petLikes; }
+            set { this.petLikes = value; }
+        }
+
+        public Volunteer()
+        {
+        }
+
+        public Volunteer(string name, string initials, string petLikes)
+        {
+            Name = name;
+            Initials = initials;
+            PetLikes = petLikes;
+        }
 
         public string FeedAll(List<VirtualPet> Foo)
         {
-            foreach(VirtualPet pet in Foo)
+            foreach (VirtualPet pet in Foo)
             {
-                if(pet.IsHungry)
+                if (pet.IsHungry)
                 {
                     pet.Feed();
                 }
             }
-            return "All the animals are fed.";
+            return "All the pets have been fed.";
         }
 
         public string WaterAll(List<VirtualPet> Foo)
@@ -32,7 +49,19 @@ namespace VPShelter
                     pet.GiveDrink();
                 }
             }
-            return "All the animals have been given water.";
+            return "All the pets have been given water.";
         }
+
+        public override void ClockIn()
+        {
+            Present = true;
+        }
+
+        public override void ClockOut()
+        {
+            Present = false;
+        }
+
+        
     }
 }

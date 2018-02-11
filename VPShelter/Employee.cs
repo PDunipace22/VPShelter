@@ -8,11 +8,13 @@ namespace VPShelter
 {
     public abstract class Employee
     {
+        //fields
         private string name;
         private string initials;
         private string employeeType;
         private bool present = false;
 
+        //Properties
         public string Name
         {
             get { return this.name; }
@@ -37,16 +39,12 @@ namespace VPShelter
         public bool Present
         {
             get { return this.present; }
+            set { this.present = value; }
         }
 
-        public void ClockIn()
-        {
-            present = true;
-        }
+        //method
+        public abstract void ClockIn();
 
-        public void ClockOut()
-        {
-            present = false;
-        }
+        public abstract void ClockOut();
     }
 }
