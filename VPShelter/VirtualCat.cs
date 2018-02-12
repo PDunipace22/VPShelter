@@ -8,17 +8,31 @@ namespace VPShelter
 {
     public class VirtualCat : VirtualPet
     {
-        private bool isMeowing;
+        private string petType;
+        private string petDiet;
 
-        public bool IsMeowing
+        public string PetType
         {
-            get { return this.isMeowing; }
-            set { this.isMeowing = value; }
+            get { return this.petType; }
+            set { this.petType = value; }
         }
+        public string PetDiet
+        {
+            get { return this.petDiet; }
+            set { this.petDiet = value; }
+        }
+
 
         public VirtualCat()
         {
 
+        }
+        public VirtualCat(string name, string description, string petType, string petDiet)
+        {
+            Name = name;
+            Description = description;
+            PetType = petType;
+            PetDiet = petDiet;
         }
         public VirtualCat(string name, bool isHungry, bool isThirsty, bool isBored, bool isTired, bool isSick)
         {
@@ -28,22 +42,6 @@ namespace VPShelter
             this.IsBored = isBored;
             this.IsTired = isTired;
             this.IsSick = isSick;
-        }
-       
-
-        public string GiveTreats()
-        {
-            string message = string.Empty;
-            if (isMeowing)
-            {
-                message = "You gave the cat a treat.";
-            }
-            else
-            {
-                message = "The cat already had a treat.";
-            }
-            isMeowing = false;
-            return message;
         }
     }
 }

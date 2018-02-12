@@ -46,5 +46,7 @@ namespace VPShelter
         public abstract void ClockIn();
 
         public abstract void ClockOut();
+
+        public abstract void Menu(VirtualPetShelter shelter);
     }
 }

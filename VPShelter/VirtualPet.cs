@@ -15,6 +15,7 @@ namespace VPShelter
         private bool isTired;
         private bool isSick;
         private string name;
+        private string description;
 
 
         #region Properties
@@ -48,6 +49,11 @@ namespace VPShelter
             get { return this.name; }
             set { this.name = value; }
         }
+        public virtual string Description
+        {
+            get { return this.description; }
+            set { this.description = value; }
+        }
         #endregion 
 
         //Constructors
@@ -55,9 +61,15 @@ namespace VPShelter
         {
             
         }
-        public VirtualPet(string name,bool isHungry, bool isThirsty, bool isBored, bool isTired, bool isSick)
+        public VirtualPet(string name, string description)
         {
             this.name = name;
+            this.description = description;
+        }
+        public VirtualPet(string name,string description, bool isHungry, bool isThirsty, bool isBored, bool isTired, bool isSick)
+        {
+            this.name = name;
+            this.description = description;
             this.isHungry = isHungry;
             this.isThirsty = isThirsty;
             this.isBored = isBored;
@@ -71,11 +83,11 @@ namespace VPShelter
             string message = string.Empty;
             if (isHungry)
             {
-                message = "You just fed Sam.";
+                message = "You just fed " + this.name;
             }
             else
             {
-                message = "Sam is not hungry right now.";
+                message =  this.name + " is not hungry right now.";
             }
             Tick();
             isHungry = false;
@@ -87,7 +99,7 @@ namespace VPShelter
             string message = string.Empty;
             if (isThirsty)
             {
-                message = "You just gave pet a drink.";
+                message = "You just gave " + this.name + " pet a drink.";
             }
             else
             {
@@ -98,7 +110,7 @@ namespace VPShelter
             return message;
         }
 
-        public string Talk()
+        public string Play()
         {
             string message = string.Empty;
             if (isBored)
@@ -109,6 +121,7 @@ namespace VPShelter
             {
                 message = "Sam is already talking to himself.";
             }
+            Tick();
             isBored = false;
             return message;
         }
